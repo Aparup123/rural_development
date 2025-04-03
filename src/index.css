@@ -1,0 +1,30 @@
+/* src/index.css */
+:root {
+  --primary-color: #28a745; /* Green for rural theme */
+  --secondary-color: #6c757d;
+  --highlight-color: #f0ad4e; /* Warm highlight color */
+  --water-color: #0275d8; /* Blue for water initiatives */
+  --earth-color: #8a6d3b; /* Brown for agriculture/earth */
+  --light-color: #f8f9fa;
+  --dark-color: #2c5320; /* Dark green */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Additional global styles for rural development theme */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Georgia', serif; /* More organic font for headings */
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}

@@ -1,0 +1,81 @@
+/* src/components/Dashboard/Dashboard.css */
+.dashboard {
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #333;
+  }
+  
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .dashboard-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    border-left: 4px solid;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .card-content {
+    flex: 1;
+  }
+  
+  .card-content h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6c757d;
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .card-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard {
+      padding: 3rem 1rem;
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+    
+    .dashboard-grid {
+      grid-template-columns: 1fr;
+    }
+  }
