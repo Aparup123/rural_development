@@ -52,7 +52,7 @@
   }
   
   .mobile-menu.open {
-    max-height: 300px;
+    max-height: 400px;
     opacity: 1;
     visibility: visible;
   }

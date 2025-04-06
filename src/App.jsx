@@ -1,59 +1,101 @@
-// src/App.jsx
-import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header/Header';
-import Hero from './components/Hero/Hero';
-import Programs from './components/Programs/Programs';
-import News from './components/News/News';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import './App.css';
 
-// Import your images
-import slide1 from './assets/images/slide1.jpg'; // Update with rural landscape image
-import slide2 from './assets/images/slide2.jpg'; // Update with farming community image
-import slide3 from './assets/images/slide3.jpg'; // Update with village development image
+import Education from './pages/education';
+import HealthCare from './pages/healthcare';
+import News from "./pages/news";
+import ProgramsEventsSchemes from './pages/programs';
+import WildlifeEcologyPage from './pages/wildlife_and_ecology';
+import RootLayout from './layouts/RootLayout';
+import Home from './pages/home';
+import NotFound from './pages/not_found';
+import { green } from '@mui/material/colors';
+import WaterSolution from './pages/water_solution';
+import WaterFilter from './pages/water_filter';
+import WaterQualityDevice from './pages/WaterQualityDevice';
+
+import withVoiceAssistant from './components/withVoiceAssistant';
+import FloatingAssistantButton from './components/FloatingAssistantButton';
+
+import VoiceChatBotTest from './pages/audio_record';
+
+// Apply voice assistant to pages
+const HomeWithVoiceAssistant = withVoiceAssistant(Home);
+const HealthCareWithVoiceAssistant = withVoiceAssistant(HealthCare);
+const EducationWithVoiceAssistant = withVoiceAssistant(Education);
+const NewsWithVoiceAssistant = withVoiceAssistant(News);
+const ProgramsWithVoiceAssistant = withVoiceAssistant(ProgramsEventsSchemes);
+const WildlifeWithVoiceAssistant = withVoiceAssistant(WildlifeEcologyPage);
+const WaterSolutionWithVoiceAssistant = withVoiceAssistant(WaterSolution);
+const WaterFilterWithVoiceAssistant = withVoiceAssistant(WaterFilter);
+const WaterQualityDeviceWithVoiceAssistant = withVoiceAssistant(WaterQualityDevice);
 
 function App() {
-  const heroSlides = [
-    {
-      image: slide1,
-      title: 'Empowering Rural Communities',
-      description: 'Supporting sustainable development and improving quality of life in rural areas.',
-      button: 'Our Mission'
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: green[500]
+      },
+      secondary: {
+        main: "#6c757d"
+      }
     },
-    {
-      image: slide2,
-      title: 'Agricultural Innovation',
-      description: 'Enhancing farming practices through education, technology, and sustainable methods.',
-      button: 'Learn More'
-    },
-    {
-      image: slide3,
-      title: 'Building Infrastructure',
-      description: 'Developing roads, water systems, and essential facilities for vibrant rural communities.',
-      button: 'View Projects'
-    }
-  ];
+  });
+
+  const router = createBrowserRouter([{
+    path: "/",
+    Component: RootLayout,
+    errorElement: <NotFound />,
+    children: [
+      {
+        index: true,
+        Component: HomeWithVoiceAssistant
+      },
+      {
+        path: "healthcare",
+        Component: HealthCareWithVoiceAssistant
+      },
+      {
+        path: "education",
+        Component: EducationWithVoiceAssistant
+      },
+      {
+        path: "news",
+        Component: NewsWithVoiceAssistant
+      },
+      {
+        path: "programs",
+        Component: ProgramsWithVoiceAssistant
+      },
+      {
+        path: "wildlife",
+        Component: WildlifeWithVoiceAssistant
+      },
+      {
+        path: "water",
+        Component: WaterSolutionWithVoiceAssistant,
+      },
+      {
+        path: "water/filter",
+        Component: WaterFilterWithVoiceAssistant
+      },
+      {
+        path: "water/water_quality_device",
+        Component: WaterQualityDeviceWithVoiceAssistant
+      },
+      
+      {
+        path: "audio_record_test",
+        Component: VoiceChatBotTest
+      }
+    ]
+  }]);
 
   return (
-    <Router>
-      <div className="app">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={
-              <>
-                <Hero slides={heroSlides} />
-                <Programs />
-              </>
-            } />
-            <Route path="/news/*" element={<News />} />
-          </Routes>
-        </main>
-        <footer className="footer">
-          © {new Date().getFullYear()} Rural Development Initiative. All rights reserved.
-        </footer>
-      </div>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   );
 }
 

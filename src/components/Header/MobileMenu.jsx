@@ -1,4 +1,3 @@
-// src/components/Header/MobileMenu.jsx
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './MobileMenu.css';
@@ -33,10 +32,22 @@ function MobileMenu() {
               <Link to="/" onClick={closeMenu}>Home</Link>
             </li>
             <li>
+              <Link to="/healthcare" onClick={closeMenu}>Healthcare</Link>
+            </li>
+            <li>
+              <Link to="/water" onClick={closeMenu}>Water Sollution</Link>
+            </li>
+            <li>
+              <Link to="/education" onClick={closeMenu}>Education</Link>
+            </li>
+            <li>
               <Link to="/news" onClick={closeMenu}>News</Link>
             </li>
             <li>
               <Link to="/programs" onClick={closeMenu}>Programs</Link>
+            </li>
+            <li>
+              <Link to="/wildlife" onClick={closeMenu}>Wildlife</Link>
             </li>
             <li>
               <Link to="/about" onClick={closeMenu}>About</Link>

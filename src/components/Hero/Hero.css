@@ -2,8 +2,7 @@
 .hero {
     height: 80vh;
     width: 100%;
-    overflow: hidden;
-    margin-top: 60px; /* To account for fixed header */
+    overflow: hidden; /* To account for fixed header */
   }
   
   swiper-container {

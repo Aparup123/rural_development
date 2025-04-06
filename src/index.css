@@ -1,4 +1,12 @@
+
+@import "tailwindcss";
 /* src/index.css */
+
+@theme {
+  --color-primary: #28a745;
+  --color-secondary: #6c757d;
+  --color-primary-dark:#238f3c
+}
 :root {
   --primary-color: #28a745; /* Green for rural theme */
   --secondary-color: #6c757d;
@@ -9,14 +17,15 @@
   --dark-color: #2c5320; /* Dark green */
 }
 
-body {
-  margin: 0;
-  padding: 0;
-}
-
 /* Additional global styles for rural development theme */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Georgia', serif; /* More organic font for headings */
+  font-family: 'Roboto', serif; /* More organic font for headings */
+}
+
+@layer base{
+  button{
+    @apply bg-primary rounded-lg border-2 border-primary-dark p-3 m-1 text-white  
+  }
 }
 
 .btn-primary {
